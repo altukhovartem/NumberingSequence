@@ -20,31 +20,27 @@ namespace NumberingSequence
         {
             string str1 = "483 177 661 992 619 959 641 378 569 317 519 708 961 131 959 266 947 616 883 793";
             string str2 = "101 15 38 8 19 33";
-            sequence(str1);
+            Console.WriteLine(sequence(str1));
         }
 
-        private static void sequence(string str)
+        private static string sequence(string str)
         {
-            var a = str.Split(' ').Select(x => int.Parse(x)).ToArray();
-            var b = a.Where(x => x % 2 == 1);
-            var c = b.Take(3);
-            var d = c.Select(x => x - 3);
-            var e = d.OrderByDescending(x => x);
-            var f = e.Select(x => x + 5);
+            //var a = str.Split(' ').Select(x => int.Parse(x)).ToArray();
+            //var b = a.Where(x => x % 2 == 1);
+            //var c = b.Take(3);
+            //var d = c.Select(x => x - 3);
+            //var e = d.OrderByDescending(x => x);
+            //var f = e.Select(x => x + 5);
 
-
-            var newSequrnce = str.Split(' ')
+            string returnStr = string.Join(" ", str.Split(' ')
                 .Select(x => int.Parse(x))
                 .Where(x => x % 2 != 0)
                 .Take(3)
                 .Select(x => x - 3)
                 .OrderByDescending(x => x)
-                .Select(x => x + 5);
+                .Select(x => x + 5));
 
-            foreach (var item in newSequrnce)
-            {
-                Console.WriteLine(item);
-            }
+            return returnStr;
         }
     }
 }
